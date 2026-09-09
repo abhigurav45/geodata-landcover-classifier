@@ -58,52 +58,6 @@ geodata-landcover-classifier/
 └── README.md
 ```
 
-## How to reproduce
-
-### 1. Train the model (Google Colab, free GPU)
-
-1. Open `train_model_colab.ipynb` in [Google Colab](https://colab.research.google.com)
-   (or `File > Upload notebook` from this repo)
-2. `Runtime > Change runtime type > GPU`
-3. Run all cells (~10–15 min)
-4. Download the resulting `model/landcover_cnn.h5` from the Colab file
-   browser and place it in this repo's `model/` folder
-
-### 2. Run the app locally
-
-```bash
-pip install -r requirements.txt
-streamlit run streamlit_app.py
-```
-
-Open the local URL Streamlit prints (usually `http://localhost:8501`).
-
-### 3. Deploy for free (Streamlit Community Cloud)
-
-1. Push this repo to GitHub (see below)
-2. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub
-3. Click **"Create app"** → **"Yup, I have an app"**
-4. Select this repo, branch `main`, file path `streamlit_app.py`
-5. (Optional) pick a custom subdomain under "Advanced settings"
-6. Click **Deploy** — live in a few minutes, and future pushes to GitHub
-   auto-redeploy
-
-## Push to GitHub
-
-```bash
-cd geodata-landcover-classifier
-git init
-git add .
-git commit -m "Initial commit: land cover classifier"
-git branch -M main
-git remote add origin https://github.com/<your-username>/geodata-landcover-classifier.git
-git push -u origin main
-```
-
-> Tip: if `model/landcover_cnn.h5` is small (a CNN this size usually is,
-> a few MB), just commit it normally. If it ever exceeds ~100MB, use
-> [Git LFS](https://git-lfs.com) instead of committing it directly.
-
 ## What this demonstrates
 
 - Working with real satellite/remote sensing imagery (Sentinel-2)
@@ -112,6 +66,8 @@ git push -u origin main
 - Shipping a model as an interactive, publicly usable web app
 - End-to-end ML project practice: data → model → deployment → docs
 - <img width="1200" height="1050" alt="image" src="https://github.com/user-attachments/assets/83fbb3a3-5c7b-4832-a82c-fe2701b8a9f8" />
+<img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/6f26e74b-8b20-4a41-b11e-777ba38edc11" />
+
 
 
 ## Credits
