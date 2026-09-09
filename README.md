@@ -111,6 +111,8 @@ git push -u origin main
 - Proper train/val/test evaluation (confusion matrix, per-class F1)
 - Shipping a model as an interactive, publicly usable web app
 - End-to-end ML project practice: data → model → deployment → docs
+- <img width="1200" height="1050" alt="image" src="https://github.com/user-attachments/assets/83fbb3a3-5c7b-4832-a82c-fe2701b8a9f8" />
+
 
 ## Credits
 
