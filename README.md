@@ -5,13 +5,14 @@ cover types (forest, water, cropland, urban, etc.) using the EuroSAT
 (Sentinel-2) dataset — built as a hands-on follow-up project after completing
 ISRO IIRS's **"AI/ML for Geodata Analytics"** outreach course (Aug 2026).
 
-**🔗 Live demo: (https://geodata-landcover-classifier-ab.streamlit.app/)
+**🔗 Live demo: https://geodata-landcover-classifier-ab.streamlit.app/
 
 **📜 Certificate: Credential URL:  https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php    
                    Credential ID:  ir3qAp0Y2z
  *On linkedin.._https://www.linkedin.com/in/abhigurav45/overlay/Certifications/80870984/treasury/?profileId=ACoAAFBr-M0BDMB9kz1hwVwSM42l_ii5Xjd5u6g
 
-![app-screenshot](sample_images/app_screenshot.png)
+<img width="1917" height="816" alt="image" src="https://github.com/user-attachments/assets/fe661737-ac3c-46ec-915c-2514c3d73a99" />
+
 _(replace with an actual screenshot once you run the app)_
 
 ## Why this project
