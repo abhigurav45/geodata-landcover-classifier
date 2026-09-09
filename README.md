@@ -4,8 +4,9 @@ A CNN-based web app that classifies satellite image patches into 10 land
 cover types (forest, water, cropland, urban, etc.) using the EuroSAT
 (Sentinel-2) dataset — built as a hands-on follow-up project after completing
 ISRO IIRS's **"AI/ML for Geodata Analytics"** outreach course (Aug 2026).
-**📜 Certificate: Credential URL:  https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php    
-                   Credential ID:  ir3qAp0Y2z
+Credential ID:  ir3qAp0Y2z
+**📜 Certificate: Credential URL:  https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php            Credential ID:  ir3qAp0Y2z
+                                   
  *On linkedin.._https://www.linkedin.com/in/abhigurav45/overlay/Certifications/80870984/treasury/?profileId=ACoAAFBr-M0BDMB9kz1hwVwSM42l_ii5Xjd5u6g
  
 **🔗 Live demo: https://geodata-landcover-classifier-ab.streamlit.app/
