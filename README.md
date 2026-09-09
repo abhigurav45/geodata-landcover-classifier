@@ -6,8 +6,9 @@ cover types (forest, water, cropland, urban, etc.) using the EuroSAT
 ISRO IIRS's **"AI/ML for Geodata Analytics"** outreach course (Aug 2026).
 
 **🔗 Live demo: (https://geodata-landcover-classifier-ab.streamlit.app/)
-**📜 Certificate: Credential URL: https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php    
-                   Credential ID:ir3qAp0Y2z
+
+**📜 Certificate: Credential URL:  https://isrolms.iirs.gov.in/mod/customcert/verify_certificate.php    
+                   Credential ID:  ir3qAp0Y2z
  *On linkedin.._https://www.linkedin.com/in/abhigurav45/overlay/Certifications/80870984/treasury/?profileId=ACoAAFBr-M0BDMB9kz1hwVwSM42l_ii5Xjd5u6g
 
 ![app-screenshot](sample_images/app_screenshot.png)
