@@ -1,4 +1,3 @@
-<img width="1897" height="965" alt="Screenshot 2026-09-15 155600" src="https://github.com/user-attachments/assets/1e3c8c22-0348-4b48-bbf6-552184d5e040" /># 🛰️ Satellite Land Cover Classifier
 
 A CNN-based web app that classifies satellite image patches into 10 land
 cover types (forest, water, cropland, urban, etc.) using the EuroSAT
@@ -11,6 +10,8 @@ Credential ID:  ir3qAp0Y2z
  
 **🔗 Live demo: https://abhigurav45.github.io/geodata-landcover-classifier/
 <img width="1917" height="816" alt="image" src=""C:\Users\abhis\OneDrive\Pictures\Screenshots\practical proj pics\final output\Screenshot 2026-09-15 155600.png"" />
+<img width="1897" height="965" alt="Screenshot 2026-09-15 155600" src="https://github.com/user-attachments/assets/1e3c8c22-0348-4b48-bbf6-552184d5e040" /># 🛰️ Satellite Land Cover Classifier
+
 ## Why this project
 
 The course covered AI/ML techniques for remote sensing and GIS. This project
