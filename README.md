@@ -10,8 +10,7 @@ Credential ID:  ir3qAp0Y2z
  *On linkedin.._https://www.linkedin.com/in/abhigurav45/overlay/Certifications/80870984/treasury/?profileId=ACoAAFBr-M0BDMB9kz1hwVwSM42l_ii5Xjd5u6g
  
 **🔗 Live demo: https://abhigurav45.github.io/geodata-landcover-classifier/
-<img width="1917" height="816" alt="image" src=""C:\Users\abhis\OneDrive\Pictures\Screenshots\practical proj pics\final output\Screenshot 2026-09-15 155600.png"" />
-<img width="1897" height="965" alt="Screenshot 2026-09-15 155600" src="https://github.com/user-attachments/assets/1e3c8c22-0348-4b48-bbf6-552184d5e040" /># 🛰️ Satellite Land Cover Classifier
+ <img width="1897" height="965" alt="Screenshot 2026-09-15 155600" src="https://github.com/user-attachments/assets/1e3c8c22-0348-4b48-bbf6-552184d5e040" /># 🛰️ Satellite Land Cover Classifier
 
 ## Why this project
 
