@@ -211,19 +211,51 @@
   @media (max-width:640px){ .metrics{grid-template-columns:1fr;} }
 
   .charts{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+  display:grid;
+  grid-template-columns:1.45fr 1fr;
+  gap:24px;
+  align-items:start;
+}
+
+.charts figure{
+  margin:0;
+}
+
+.charts figure:first-child img{
+  width:100%;
+  height:auto;
+}
+
+.charts figure:nth-child(2) img{
+  width:82%;
+  height:auto;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.charts img{
+  display:block;
+  border:1px solid var(--line);
+  background:var(--bg-panel);
+  border-radius:6px;
+}
+
+.charts figcaption{
+  color:var(--text-faint);
+  font-size:0.85rem;
+  margin-top:10px;
+  font-family:var(--mono);
+}
+
+@media (max-width:700px){
+  .charts{
+    grid-template-columns:1fr;
   }
-  .charts figure{ margin:0; }
-  .charts img{
-    border:1px solid var(--line);
-    background:var(--bg-panel);
+
+  .charts figure:nth-child(2) img{
+    width:100%;
   }
-  .charts figcaption{
-    color:var(--text-faint); font-size:0.85rem; margin-top:10px; font-family:var(--mono);
-  }
-  @media (max-width:700px){ .charts{grid-template-columns:1fr;} }
+}
 
   /* ---------- App preview ---------- */
   .app-frame{
@@ -400,6 +432,45 @@
   footer .flinks a{ text-decoration:none; color:var(--text-dim); }
   footer .flinks a:hover{ color:var(--text); }
   footer .fnote{ color:var(--text-faint); font-size:0.8rem; margin-top:6px; }
+/* Professional results image layout */
+.results-images {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.results-images figure {
+  margin: 0;
+}
+
+.results-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.results-images figcaption {
+  margin-top: 12px;
+}
+
+/* Make confusion matrix smaller */
+.results-images figure:nth-child(2) img {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* Mobile layout */
+@media (max-width: 800px) {
+  .results-images {
+    grid-template-columns: 1fr;
+  }
+
+  .results-images figure:nth-child(2) img {
+    width: 100%;
+  }
+}
 </style>
 </head>
 <body>
@@ -426,8 +497,8 @@
       on the EuroSAT dataset and shipped as a working app, not just a notebook.
     </p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://geodata-landcover-classifier-ab.streamlit.app/" target="_blank">Try the live app</a>
-      <a class="btn btn-secondary" href="https://github.com/abhigurav45/geodata-landcover-classifier" target="_blank">View source on GitHub</a>
+
+      <a class="btn btn-secondary" href="https://github.com/your-username/geodata-landcover-classifier" target="_blank">View source on GitHub</a>
     </div>
   </div>
 </section>
@@ -461,17 +532,17 @@
     <div class="pipe-step">
       <div class="n">02 — PREPROCESS</div>
       <h3>Normalize & augment</h3>
-      <p>Images upscaled to 96×96 and normalized to [-1,1]; random flips, rotation, zoom, contrast, and brightness jitter applied during training.</p>
+      <p>Pixel values scaled to [0,1]; random flips and brightness jitter applied during training to improve generalization.</p>
     </div>
     <div class="pipe-step">
       <div class="n">03 — MODEL</div>
       <h3>Convolutional network</h3>
-      <p>MobileNetV2 (pretrained on ImageNet), fine-tuned in two phases — head training, then unfreezing the top third of the backbone at a low learning rate.</p>
+      <p>Three convolutional blocks with batch normalization, global average pooling, and a dropout-regularized dense head.</p>
     </div>
     <div class="pipe-step">
       <div class="n">04 — SERVE</div>
-      <h3>In-browser inference</h3>
-      <p>Model converted to TensorFlow.js and run directly in the visitor's browser — no server required. A separate Streamlit app is also available for the same model.</p>
+      <h3>Streamlit app</h3>
+      <p>Upload any satellite patch and get a predicted class with a full confidence breakdown, live in the browser.</p>
     </div>
   </div>
 </section>
@@ -519,7 +590,7 @@
   <div class="app-frame">
     <div class="bar">
       <span></span><span></span><span></span>
-      <span class="url">landcover-classifier — running locally in your browser via TensorFlow.js</span>
+      <span class="url"></span>
     </div>
 
     <div class="tryit-body">
@@ -605,14 +676,15 @@
       <div class="fnote">Built after ISRO IIRS's AI/ML for Geodata Analytics course, 2026.</div>
     </div>
     <div class="flinks">
-      <a href="https://github.com/abhigurav45/geodata-landcover-classifier" target="_blank">GitHub</a>
-      <a href="https://geodata-landcover-classifier-ab.streamlit.app/" target="_blank">Live app</a>
+      <a href="https://github.com/your-username/geodata-landcover-classifier" target="_blank">GitHub</a>
+      <a href="https://your-app-name.streamlit.app" target="_blank">Live app</a>
+      <a href="https://linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
       <a href="https://www.linkedin.com/in/abhigurav45/" target="_blank">LinkedIn</a>
     </div>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/[email protected]/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
 <script>
   // ---------- Live in-browser classifier ----------
   // Class order MUST match the order used during training (utils.py CLASS_NAMES),
@@ -634,28 +706,15 @@
 
   let model = null;
 
-  async function loadModel(attempt = 1, maxAttempts = 4) {
+  async function loadModel() {
     try {
-      statusEl.textContent = attempt === 1
-        ? "Loading model…"
-        : `Loading model… (retry ${attempt - 1}/${maxAttempts - 1})`;
-      statusEl.classList.remove('err');
-
-      model = await tf.loadLayersModel(MODEL_URL);
+      model = await tf.loadGraphModel(MODEL_URL);
       statusEl.textContent = "Model loaded — ready.";
       statusEl.classList.add('ready');
     } catch (err) {
-      console.error(`Model load attempt ${attempt} failed:`, err);
-      if (attempt < maxAttempts) {
-        // Transient network hiccups are common when fetching multiple large
-        // files (model.json + several .bin shards) — retry with backoff
-        // before concluding the files are genuinely missing.
-        const delayMs = 1000 * attempt;
-        setTimeout(() => loadModel(attempt + 1, maxAttempts), delayMs);
-      } else {
-        statusEl.textContent = "Couldn't load the model after several tries — check your connection and refresh, or see website/README.md.";
-        statusEl.classList.add('err');
-      }
+      statusEl.textContent = "Model not found yet — see website/README.md to add it.";
+      statusEl.classList.add('err');
+      console.error(err);
     }
   }
   loadModel();
