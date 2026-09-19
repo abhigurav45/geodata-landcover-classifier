@@ -641,7 +641,14 @@
         : `Loading model… (retry ${attempt - 1}/${maxAttempts - 1})`;
       statusEl.classList.remove('err');
 
-      model = await tf.loadLayersModel(MODEL_URL);
+      // The converted model is a TensorFlow.js *graph* model
+      // ("format": "graph-model" in model.json), so it must be loaded with
+      // loadGraphModel. loadLayersModel throws on this file.
+      model = await tf.loadGraphModel(MODEL_URL);
+
+      // Warm up so the first real classification isn't slow.
+      tf.tidy(() => model.predict(tf.zeros([1, IMG_SIZE, IMG_SIZE, 3])));
+
       statusEl.textContent = "Model loaded — ready.";
       statusEl.classList.add('ready');
     } catch (err) {
