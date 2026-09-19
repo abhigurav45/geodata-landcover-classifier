@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Satellite Land Cover Classifier — Abhishek Ramdas Gurav</title>
 <meta name="description" content="A CNN trained on Sentinel-2 imagery to classify land cover into 10 categories, built after ISRO IIRS's AI/ML for Geodata Analytics course.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preload" as="script" href="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js">
+<link rel="preload" as="fetch" crossorigin="anonymous" href="assets/tfjs_model/model.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -644,7 +647,22 @@
       // The converted model is a TensorFlow.js *graph* model
       // ("format": "graph-model" in model.json), so it must be loaded with
       // loadGraphModel. loadLayersModel throws on this file.
-      model = await tf.loadGraphModel(MODEL_URL);
+      //
+      // Speed-up: try loading a cached copy from IndexedDB first (instant,
+      // no network at all). If this is the visitor's first time, that load
+      // fails, so fall back to the network and cache it for next time.
+      const CACHE_KEY = 'indexeddb://landcover-cnn-v1';
+      try {
+        model = await tf.loadGraphModel(CACHE_KEY);
+      } catch {
+        model = await tf.loadGraphModel(MODEL_URL);
+        try {
+          await model.save(CACHE_KEY);
+        } catch (saveErr) {
+          // Non-fatal: caching failed (e.g. private browsing), just skip it.
+          console.warn('Could not cache model in IndexedDB:', saveErr);
+        }
+      }
 
       // Warm up so the first real classification isn't slow.
       tf.tidy(() => model.predict(tf.zeros([1, IMG_SIZE, IMG_SIZE, 3])));
