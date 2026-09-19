@@ -612,7 +612,7 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/[email protected]/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
 <script>
   // ---------- Live in-browser classifier ----------
   // Class order MUST match the order used during training (utils.py CLASS_NAMES),
@@ -647,6 +647,9 @@
     } catch (err) {
       console.error(`Model load attempt ${attempt} failed:`, err);
       if (attempt < maxAttempts) {
+        // Transient network hiccups are common when fetching multiple large
+        // files (model.json + several .bin shards) — retry with backoff
+        // before concluding the files are genuinely missing.
         const delayMs = 1000 * attempt;
         setTimeout(() => loadModel(attempt + 1, maxAttempts), delayMs);
       } else {
@@ -681,6 +684,8 @@
     barListEl.innerHTML = "";
 
     tf.tidy(() => {
+      // Must match tf.keras.applications.mobilenet_v2.preprocess_input:
+      // scale pixel values from [0,255] to [-1,1], not [0,1].
       let tensor = tf.browser.fromPixels(imgEl)
         .resizeBilinear([IMG_SIZE, IMG_SIZE])
         .toFloat()
@@ -721,6 +726,8 @@
 </script>
 
 <script>
+  // Build the hero mosaic from the same class colors used in the legend —
+  // a single deliberate motion moment: tiles fade in on load, staggered.
   const colors = [
     '#4C7A52','#C99A44','#B08A4E','#8C9A4E','#6E8F6A',
     '#3E7C93','#4A8FA8','#A34A34','#8A6A57','#6B6E76'
