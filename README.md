@@ -49,7 +49,7 @@ the training script) for the full per-class breakdown.
 - Working with real satellite/remote sensing imagery (Sentinel-2)
 - Building and training a CNN from scratch (not just calling an API)
 - Proper train/val/test evaluation (confusion matrix, per-class F1)
-- Shipping a model as an interactive, publicly usable web app
+- Shipping a model as an interactive, publicly usable web app 
 - End-to-end ML project practice: data → model → deployment → docs
 - <img width="1200" height="1050" alt="image" src="https://github.com/user-attachments/assets/83fbb3a3-5c7b-4832-a82c-fe2701b8a9f8" />
 <img width="1800" height="600" alt="image" src="https://github.com/user-attachments/assets/6f26e74b-8b20-4a41-b11e-777ba38edc11" />
