@@ -29,7 +29,7 @@ usable web app — rather than stopping at a certificate.
 ## Model
 
 Small CNN (3 conv blocks with batch norm + max pooling, global average
-pooling, dense + dropout head), trained with data augmentation
+pooling, dense + dropout head), trained with data augmentation 
 (flips, brightness jitter), early stopping, and LR reduction on plateau.
 
 Fill in after training:
