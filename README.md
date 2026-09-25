@@ -22,7 +22,7 @@ usable web app — rather than stopping at a certificate.
 
 - **EuroSAT (RGB)** — 27,000 labeled 64x64 Sentinel-2 image patches across
   10 land cover classes, released by Helber et al. (2019). Loaded via
-  `tensorflow_datasets` (`eurosat/rgb`).
+  `tensorflow_datasets` (`eurosat/rgb`). 
 - Classes: AnnualCrop, Forest, HerbaceousVegetation, Highway, Industrial,
   Pasture, PermanentCrop, Residential, River, SeaLake.
 
