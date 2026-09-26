@@ -18,7 +18,7 @@ applies that directly: preprocessing satellite imagery, training a CNN for
 land cover classification, evaluating it properly, and shipping it as a
 usable web app — rather than stopping at a certificate.
 
-## Dataset
+## Dataset 
 
 - **EuroSAT (RGB)** — 27,000 labeled 64x64 Sentinel-2 image patches across
   10 land cover classes, released by Helber et al. (2019). Loaded via
