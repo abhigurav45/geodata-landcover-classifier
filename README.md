@@ -1,5 +1,5 @@
 A CNN-based web app that classifies satellite image patches into 10 land
-cover types (forest, water, cropland, urban, etc.) using the EuroSAT 
+cover types (forest, water, cropland, urban, etc.) using the EuroSAT  
 (Sentinel-2) dataset — built as a hands-on follow-up project after completing
 ISRO IIRS's **"AI/ML for Geodata Analytics"** outreach course (Aug 2026).   
 
